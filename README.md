@@ -1,2 +1,6 @@
-# rsbuild-tanrouter-ssr
-用rsbuild构建tantouter项目并支持ssr
+# Example
+
+To run this example:
+
+- `npm install` or `yarn`
+- `npm start` or `yarn start`
