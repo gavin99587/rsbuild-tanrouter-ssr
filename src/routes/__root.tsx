@@ -6,9 +6,9 @@ import {
   HeadContent,
   Scripts,
 } from '@tanstack/react-router'
-import type { RouterContext } from '../routerContext'
+import type { AppLoadContext } from '../appLoadContext'
 
-export const Route = createRootRouteWithContext<RouterContext>()({
+export const Route = createRootRouteWithContext<AppLoadContext>()({
   head: () => ({
     meta: [
       {
@@ -27,7 +27,7 @@ export const Route = createRootRouteWithContext<RouterContext>()({
         src: 'https://unpkg.com/@tailwindcss/browser@4',
       },
       {
-        src: '/static/js/vendors-node_modules_pnpm_process_0_11_10_node_modules_process_browser_js-node_modules_pnpm_r-c79ac2.js',
+        src: '/static/js/vendors-node_modules_pnpm_process_0_11_10_node_modules_process_browser_js-node_modules_pnpm_r-6470ec.js',
         defer:true
       },
       {

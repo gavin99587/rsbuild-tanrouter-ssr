@@ -3,8 +3,8 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "rsbuild build",
     "dev": "node ./server.js",
+    "build": "rsbuild build",
     "preview": "node ./prod-server.js"
   },
   "dependencies": {
