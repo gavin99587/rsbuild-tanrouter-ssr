@@ -36,6 +36,7 @@ export default defineConfig({
   tools: {
     htmlPlugin:false,
     rspack: {
+      devtool:'eval-source-map',
       plugins: [
         TanStackRouterRspack({ target: 'react', autoCodeSplitting: true }),
       ],
