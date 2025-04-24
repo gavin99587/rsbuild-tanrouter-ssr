@@ -35,6 +35,13 @@ export default defineConfig({
   plugins: [pluginReact(),pluginNodePolyfill()],
   tools: {
     htmlPlugin:false,
+    swc: {
+      jsc: {
+        experimental: {
+          plugins: [['@lingui/swc-plugin', {}]]
+        }
+      }
+    },
     rspack: {
       devtool:'eval-source-map',
       plugins: [
