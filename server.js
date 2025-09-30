@@ -5,11 +5,18 @@ import {createRsbuild, loadConfig, logger} from "@rsbuild/core";
 
 let manifest;
 
+function getEntryFiles(entryName) {
+    return manifest.entries?.[entryName]?.initial || {};
+}
+
 const serverRender = (serverAPI) => async (req, res) => {
     const indexModule = await serverAPI.environments.node.loadBundle("index");
 
+    // 注入上下文
+    const entryFiles = getEntryFiles('index');
+
     indexModule.render({
-        req, res, nick: 'bery',
+        req, res, nick: 'bery', entryFiles
     });
 };
 

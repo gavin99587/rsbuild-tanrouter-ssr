@@ -9,10 +9,15 @@ import {defaultLocale, isLocaleValid} from "./modules/lingui/i18n";
 
 export async function render({
                                  req, res, nick,
+                                 entryFiles
                              }: {
-    nick: string
     req: express.Request
-    res: express.Response
+    res: express.Response,
+    nick: string
+    entryFiles:{
+        js?: string[];
+        css?: string[];
+    }
 }) {
     console.log('req.originalUrl->', req.originalUrl);
     console.log('nick->', nick);
@@ -56,6 +61,7 @@ export async function render({
                 context: {
                     ...router.options.context,
                     nick: nick,
+                    entryFiles
                 }
             })
             return router

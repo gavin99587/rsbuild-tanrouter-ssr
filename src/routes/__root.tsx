@@ -4,37 +4,20 @@ import {defaultLocale} from "../modules/lingui/i18n";
 import {useLingui} from "@lingui/react";
 
 export const Route = createRootRouteWithContext<AppLoadContext>()({
-    head: () => ({
-        meta: [
-            {
-                title: 'TanStack Router SSR Basic File Based',
-            },
-            {
-                charSet: 'UTF-8',
-            },
-            {
-                name: 'viewport',
-                content: 'width=device-width, initial-scale=1.0',
-            },
-        ],
-        scripts: [
-            {
-                src: 'https://unpkg.com/@tailwindcss/browser@4',
-            },
-            {
-                src: '/static/js/vendors-node_modules_pnpm_process_0_11_10_node_modules_process_browser_js-node_modules_pnpm_r-fdb75d.js',
-                defer: true
-            },
-            {
-                src: '/static/js/lib-react.js',
-                defer: true
-            },
-            {
-                src: '/static/js/index.js',
-                defer: true
-            }
-        ],
-    }),
+    head: ({match}) => {
+        // match.context 才是你在服务端传的 AppLoadContext
+        const {entryFiles} = (match?.context as AppLoadContext) ?? {entryFiles: {js: [], css: []}};
+        // src: 'https://unpkg.com/@tailwindcss/browser@4',
+        return {
+            meta: [
+                {title: 'TanStack Router SSR Basic File Based'},
+                {charSet: 'UTF-8'},
+                {name: 'viewport', content: 'width=device-width, initial-scale=1.0'}
+            ],
+            links: (entryFiles?.css || []).map((href: string) => ({rel: 'stylesheet', href})),
+            scripts: (entryFiles?.js || []).map((src: string) => ({src, defer: true}))
+        };
+    },
     component: RootComponent,
 })
 

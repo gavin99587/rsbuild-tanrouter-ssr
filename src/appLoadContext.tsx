@@ -1,3 +1,7 @@
 export type AppLoadContext = {
-  nick: string
+  nick: string,
+  entryFiles?: {
+    js?: string[];
+    css?: string[];
+  };
 }
